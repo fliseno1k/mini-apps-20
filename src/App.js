@@ -11,16 +11,19 @@ import '@vkontakte/vkui/dist/vkui.css';
 import List from './panels/List';
 import Scanner from './panels/Scanner';
 import Counter from './panels/Counter';
+import Story from './panels/Story';
 
 import { ReactComponent as Scan } from './images/scan.svg';
 import { ReactComponent as Result } from './images/result.svg';
 import { ReactComponent as History } from './images/history.svg';
+import { ReactComponent as AddStory } from './images/add.svg';
 
 
 const routes = {
 	SCANNER: 'scanner', 
 	COUNTER: 'counter', 
-	LIST: 'list'
+	LIST: 'list',
+	STORYMAKER: 'storymaker'
 };
 
 function App(){
@@ -58,11 +61,21 @@ function App(){
 						>
 							<Result className="w-6 h-6 fill-current text-gray-600" />
 						</TabbarItem>
+						<TabbarItem 
+							onClick={() => setActivePanel(routes.STORYMAKER)}
+							selected={activePanel === routes.STORYMAKER} 
+							data-story="story-maker"
+							text="История"
+							style={{ paddingTop: "10px", paddingBottom: "10px" }}
+						>
+							<AddStory className="w-6 h-6 fill-current text-gray-600" />
+						</TabbarItem>
 					</Tabbar>
 				}>
 					<List id={routes.LIST} activePanel={routes.LIST} />
 					<Scanner id={routes.SCANNER} activePanel={routes.SCANNER} />
 					<Counter id={routes.COUNTER} activePanel={routes.COUNTER} />
+					<Story id={routes.STORYMAKER} activePanel={routes.STORYMAKER} />
 				</Epic>
 			</SplitCol>
 		</SplitLayout>
